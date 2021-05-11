@@ -55,5 +55,20 @@ public class BukuService {
 	        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "ID tidak ada");
 		}
     }
+
+    public Buku editPost(Buku buku, Long id) {
+        Optional<Buku> postOptional = bukuRepository.findById(id);
+		
+		if (postOptional.isPresent()) {
+			bukuRepository.save(buku);
+			throw new ResponseStatusException(
+				HttpStatus.OK, "Sukses Edit Buku"
+			);
+		}
+		else {
+			throw new ResponseStatusException(
+				HttpStatus.NOT_FOUND, "Post [id=" + buku.getID() + "] tidak ditemukan");
+		}
+    }
     
 }
