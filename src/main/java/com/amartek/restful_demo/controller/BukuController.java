@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.amartek.restful_demo.entity.Buku;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,5 +47,10 @@ public class BukuController {
 	public Buku create(@RequestBody final Buku buku) {
 		return bukuServices.createBuku(buku);
 	}
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable final Long id){
+        bukuServices.deleteBuku(id);
+    }
 
 }

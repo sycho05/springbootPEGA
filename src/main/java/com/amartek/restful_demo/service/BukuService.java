@@ -43,5 +43,17 @@ public class BukuService {
 	        throw new ResponseStatusException(HttpStatus.OK, "Buku berhasil ditambahkan!");
 		}
     }
+
+    public void deleteBuku(Long IdBuku) {
+        Optional<Buku> bukuOptional = bukuRepository.findById(IdBuku);
+		
+		if (bukuOptional.isPresent()) {
+            bukuRepository.deleteById(IdBuku);
+			throw new ResponseStatusException(HttpStatus.OK, "Berhasil dihapus");
+		}
+		else {
+	        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "ID tidak ada");
+		}
+    }
     
 }
