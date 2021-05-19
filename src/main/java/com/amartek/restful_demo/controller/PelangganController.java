@@ -44,7 +44,7 @@ public class PelangganController {
         return pelangganServices.getPelangganByNAMA(nama);
     }
 
-    @PostMapping("pelanggan/create")
+    @PostMapping("pelanggan")
 	public Pelanggan create(@RequestBody final Pelanggan pelanggan) {
 		return pelangganServices.createPelanggan(pelanggan);
 	}
